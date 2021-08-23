@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block contenido %}
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-edit"></i> Citas</h1>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Forms</li>
+    <li class="breadcrumb-item"><a href="{% url 'clientes' %}">Lista</a></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <h3 class="tile-title">Nueva Cita</h3>
+      <div class="tile-body">
+        <form class="form-horizontal" method="POST"> {% csrf_token %}
+          <div class="form-group row">
+            <label class="control-label col-md-3">Fecha</label>
+            <div class="col-md-8">
+              {{ formulario_cita.fecha}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3">Nombre del Propietario</label>
+            <div class="col-md-8">
+              {{ formulario_cita.nombrePropietario}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3">Cédula</label>
+            <div class="col-md-8">
+              {{ formulario_cita.cedula}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3">Nombre de la Mascota</label>
+            <div class="col-md-8">
+              {{ formulario_cita.nombreMascota}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3">Descripción</label>
+            <div class="col-md-8">
+              {{ formulario_cita.descripcion}}
+            </div>
+          </div>
+          <div class="tile-footer">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-3">
+                <button class="btn btn-primary" type="submit"><i
+                    class="fa fa-fw fa-lg fa-check-circle"></i>Registar</button>&nbsp;&nbsp;&nbsp;<a
+                  class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+{% block contenido %}
+{% load static %}
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-th-list"></i> Listas</h1>
+  </div>
+  <ul class="app-breadcrumb breadcrumb side">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Clientes</li>
+    <li class="breadcrumb-item active"><a href="{% url 'crear_cliente' %}">Nuevo Cliente</a></li>
+  </ul>
+  <ul class="app-breadcrumb breadcrumb side">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Mascotas</li>
+    <li class="breadcrumb-item active"><a href="{% url 'crear_mascota' %}">Nueva Mascota</a></li>
+  </ul>
+  <ul class="app-breadcrumb breadcrumb side">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item">Citas</li>
+    <li class="breadcrumb-item active"><a href="{% url 'transaccion_cita' %}">Nueva Cita</a></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <div class="tile-body">
+        <table class="table table-hover table-bordered" id="sampleTable">
+          <thead>
+            <tr>
+              <th>Cédula</th>
+              <th>Apellidos</th>
+              <th>Nombres</th>
+              <th>Dirección</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Celular</th>
+              <th>OPCIONES</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cliente in listaCliente %}
+              <tr>
+                <td>{{cliente.cedula}}</td>
+                <td>{{cliente.apellidos}}</td>
+                <td>{{cliente.nombres}}</td>
+                <td>{{cliente.direccion}}</td>
+                <td>{{cliente.correo}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td>{{cliente.celular}}</td>
+                <td><a href="{% url 'eliminar_cliente' cliente.id%}"> ELIMINAR</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <div class="tile-body">
+        <table class="table table-hover table-bordered" id="sampleTable">
+          <thead>
+            <tr>
+              <th>Nombre Mascota</th>
+              <th>Edad</th>
+              <th>Tipo</th>
+              <th>Raza</th>
+              <th>OPCION</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for mascota in listaMascota %}
+              <tr>
+                <td>{{mascota.nombreMascota}}</td>
+                <td>{{mascota.edad}}</td>
+                <td>{{mascota.tipoMascota}}</td>
+                <td>{{mascota.raza}}</td>
+                <td><a href="{% url 'eliminar_mascota' mascota.id%}"> ELIMINAR</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <div class="tile-body">
+        <table class="table table-hover table-bordered" id="sampleTable">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Nombre Propietario</th>
+              <th>Cédula</th>
+              <th>Nombre Mascota</th>
+              <th>Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cita in listaCitas %}
+              <tr>
+                <td>{{cita.fecha}}</td>
+                <td>{{cita.nombrePropietario}}</td>
+                <td>{{cita.cedula}}</td>
+                <td>{{cita.nombreMascota}}</td>
+                <td>{{cita.descripcion}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+</script>
+
+{% endblock %}

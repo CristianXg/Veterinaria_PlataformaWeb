@@ -1,0 +1,32 @@
+{% load static %}
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  {% if user.is_authenticated%}
+  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{% static 'imagenes/imagen.png' %}"
+      alt="User Image" width="140" height="100">
+    <div>
+      <p class="app-sidebar__user-name">{{user.first_name}}</p>
+      <p class="app-sidebar__user-designation">{{user.last_name}}</p>
+    </div>
+  </div>
+  {% endif %}
+  <ul class="app-menu">
+    {% for grupo in grupos%}
+    {% if grupo == 'gestion_clientes'%}
+    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+          class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Operaciones</span><i
+          class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        <li><a class="treeview-item" href="{% url 'clientes' %}"><i class="icon fa fa-circle-o"></i> Lista</a></li>
+        <li><a class="treeview-item" href="{% url 'crear_cliente' %}" rel="noopener"><i class="icon fa fa-circle-o"></i>
+            Nuevo Cliente</a></li>
+        <li><a class="treeview-item" href="{% url 'crear_mascota' %}" rel="noopener"><i class="icon fa fa-circle-o"></i>
+            Nueva Mascota</a></li>
+        <li><a class="treeview-item" href="{% url 'transaccion_cita' %}" rel="noopener"><i class="icon fa fa-circle-o"></i>
+            Nueva Cita</a></li>
+      </ul>
+    </li>
+    {% endif%}
+    {% endfor%}
+  </ul>
+</aside>
